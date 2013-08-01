@@ -93,7 +93,7 @@ class MDIMap(Map):
         properties = Map.get_properties(header)
         
         # MDI sometimes has an "60" in seconds field
-        datestr = header.get('date-obs',header.get('date_obs'))
+        datestr = header.get('date_obs',header.get('date-obs'))
 
         if datestr[17:19] == "60":
             datestr = datestr[:17] + "30" + datestr[19:]
