@@ -644,15 +644,16 @@ class VSOClient(object):
             if code == '200':
                 for dataitem in dresponse.getdataitem.dataitem:
                     try:
-                        self.download(
-                            dresponse.method.methodtype[0],
-                            dataitem.url,
-                            dw,
-                            res.require(map(str, dataitem.fileiditem.fileid)),
-                            res.add_error,
-                            path,
-                            qr[dataitem.fileiditem.fileid[0]]
-                        )
+		    	print dataitem.url
+                        #self.download(
+                        #    dresponse.method.methodtype[0],
+                        #    dataitem.url,
+                        #    dw,
+                        #    res.require(map(str, dataitem.fileiditem.fileid)),
+                        #    res.add_error,
+                        #    path,
+                        #    qr[dataitem.fileiditem.fileid[0]]
+                        #)
                     except NoData:
                         res.add_error(DownloadFailed(dresponse))
                         continue
