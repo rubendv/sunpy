@@ -50,10 +50,11 @@ def read(filepath):
         comments = [card.value for card in fits_comment]
         
     comment = "".join(comments).strip()
-    header = MapHeader(hdulist[0].header)
-    header['comment'] = comment
-
-    return hdulist[0].data, header
+    for index in range(len(hdulist)):
+        header = MapHeader(hdulist[index].header)
+        if header['naxis'] > 0:
+            header['comment'] = comment
+            return hdulist[index].data, header
 
 def get_header(filepath):
     """Returns the header for a given file"""
